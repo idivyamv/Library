@@ -18,7 +18,7 @@ app.use(express.json());
 //username= "admin";
 //password = "123456";
 
-app.get('/readbook', function(req, res) {
+app.get('/api/readbook', function(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
     BooksList.find()
@@ -27,10 +27,10 @@ app.get('/readbook', function(req, res) {
         })
 })
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send('i am divs dddd')
-})
-app.post('/addbook', (req, res) => {
+}) */
+app.post('/api/addbook', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 
@@ -58,7 +58,7 @@ app.post('/addbook', (req, res) => {
         });
   })
 
-  app.post('/login', (req, res) => {
+  app.post('/api/login', (req, res) => {
       let userData = req.body
       if(!username){
           res.status(401).send("invalid username");
@@ -71,7 +71,7 @@ app.post('/addbook', (req, res) => {
         res.status(200).send();
       }  
   })
-  app.delete('/remove/:id',(req, res) => {
+  app.delete('/api/remove/:id',(req, res) => {
       id  = req.params.id;
       BooksList.findByIdAndDelete({"_id":id})
       .then(() => {
@@ -83,7 +83,7 @@ app.post('/addbook', (req, res) => {
 
     }
   )
-  app.get('/getbook/:id',(req, res) => {
+  app.get('/api/getbook/:id',(req, res) => {
         id  = req.params.id;
         BooksList.findById({"_id":id})
         .then(function (book) {
@@ -94,7 +94,7 @@ app.post('/addbook', (req, res) => {
       });
 
   })
-  app.put('/editbook', (req, res) => {
+  app.put('/api/editbook', (req, res) => {
     id  = req.body.book._id;
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -133,9 +133,6 @@ app.post('/addbook', (req, res) => {
     res.sendFile(path.join(__dirname + '/dist/library-frontend/index.html'));
   });
 const port = 3000;
-/* app.listen(3000, () => {
+app.listen(3000, () => {
   console.log("Server up in Port 3000 ");
-}); */
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
