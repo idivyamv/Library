@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose');
 const Mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/LibraryApp');
+mongoose.connect('mongodb://127.0.0.1:27017/LibraryApp');
 
 const Schema = mongoose.Schema;
 const Book = new Schema({
