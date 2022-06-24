@@ -27,9 +27,9 @@ app.get('/api/readbook', function(req, res) {
         })
 })
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send('i am divs dddd')
-})
+}) */
 app.post('/api/addbook', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
