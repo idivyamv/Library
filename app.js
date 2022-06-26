@@ -194,10 +194,10 @@ app.use(express.json());
             res.status(400).send('book updation failed');
         });
   })
-  app.get('/*', function(req, res) {
+   app.get('/*', function(req, res) {
 
     res.sendFile(path.join(__dirname + '/dist/library-frontend/index.html'));
-  });
+  }); 
   const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
